@@ -1,9 +1,16 @@
-import request from '@/utils/request';
+import request, { RequestOption } from '@/utils/request';
 
 export function login(params: object) {
-    return request('login', params);
+    let option: RequestOption = { method: 'post', params };
+    return request('login', option);
 }
 
 export function home(params: object) {
-    return request('home', params);
+    let option: RequestOption = { params };
+    return request('home', option);
+}
+
+export function postMessage(params: object) {
+    let option: RequestOption = { method: 'post', params };
+    return request('message', option);
 }

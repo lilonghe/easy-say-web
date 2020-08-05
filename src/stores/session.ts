@@ -2,13 +2,8 @@ import { observable, action } from 'mobx';
 import * as req  from '@/services/api';
 
 class User {
-    openid: string;
-    nickname: string;
-
-    constructor(openid: string, nickname: string) {
-        this.openid = openid;
-        this.nickname = nickname;
-    }
+    openid!: string;
+    nickname!: string;
 }
 
 class Session {

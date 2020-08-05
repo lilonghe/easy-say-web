@@ -12,13 +12,39 @@ class Home {
     @observable
     page: number = 1;
 
+    @observable
+    sendText: string = '';
+
+    @observable
+    submitting: boolean = false;
+
     @action
-    getMessageList = async (params: object) => {
-        let { err, data } = await req.home(params);
+    getMessageList = async () => {
+        let { err, data } = await req.home({ page: this.page });
         if (!err) {
             this.messageList = data.nodes;
         }
         return err;
+    }
+
+    @action
+    postMessage = async () => {
+        if (!this.sendText) return;
+        if (this.submitting) return;
+
+        this.submitting = true;
+        let { err } = await req.postMessage({ content: this.sendText });
+        this.submitting = false;
+        if (!err) {
+            this.changeSendText('');
+            this.getMessageList();
+        }
+        return err;
+    }
+
+    @action
+    changeSendText = (val: string) => {
+        this.sendText = val;
     }
 }
 

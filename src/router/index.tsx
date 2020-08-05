@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Route, Link, Redirect} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import { Provider } from 'mobx-react';
 import Home from '@/pages/home';
 import Login from '@/pages/login';

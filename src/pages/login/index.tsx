@@ -26,7 +26,7 @@ export default class Login extends React.PureComponent<any, IState> {
     login = async () => {
         const { name, password } = this.state;
         const {session} = this.props;
-        let err = await session?.login(Object.create({ name, password }));
+        let err = await session.login({ name, password });
     }
 
     render() {

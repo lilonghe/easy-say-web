@@ -1,14 +1,8 @@
-class AvatarImage {
-    thumbnailUrl!: string;
-    smallPicUrl!: string;
-    picUrl!: string;
-}
-
 class User {
     username!: string;
-    screenName!: string;
+    nickname!: string;
     briefIntro!: string;
-    avatarImage!: AvatarImage;
+    avatar!: string;
 }
 
 class Message {
