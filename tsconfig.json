@@ -4,7 +4,10 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+    ],
+    "typeRoots": [
+      "./src/types"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,7 +20,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "alwaysStrict": true,
+    "experimentalDecorators": true
   },
   "include": [
     "src"
