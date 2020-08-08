@@ -1,0 +1,50 @@
+.loginWrapper {
+  margin: auto;
+  transform: translateY(30vh);
+  width: 350px;
+
+  .inputGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    label {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+      margin-right: 10px;
+    }
+  }
+
+  .input {
+    flex: 1;
+    height: 45px;
+    line-height: 45px;
+    outline: none;
+    font-size: 18px;
+    border: 1px solid #EEE;
+    padding: 0 10px;
+
+    &[type*="button"] {
+      box-shadow: 0 0 0 .5px rgba(0,0,0,.08);
+      background-color: #FFF;
+      padding: 4px 0;
+      margin-top: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .1s;
+      outline: none;
+      border: none;
+      height: auto;
+
+      &:hover {
+        box-shadow: 1px 1px 3px 1px rgba(0,0,0,.08);
+      }
+
+      &:active {
+        box-shadow: inset 0px 0px 1px 0.8px rgba(0,0,0,0.05);
+      }
+    }
+  }
+}
+

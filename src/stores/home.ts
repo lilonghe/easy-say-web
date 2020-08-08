@@ -22,7 +22,7 @@ class Home {
     getMessageList = async () => {
         let { err, data } = await req.home({ page: this.page });
         if (!err) {
-            this.messageList = data.nodes;
+            this.messageList = data;
         }
         return err;
     }

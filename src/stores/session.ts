@@ -18,6 +18,15 @@ class Session {
         }
         return err;
     }
+
+    @action
+    getUserInfo = async () => {
+        let { err, data } = await req.getUserInfo();
+        if (!err) {
+            this.user = data;
+        }
+        return err;
+    }
 }
 
 const session = new Session();

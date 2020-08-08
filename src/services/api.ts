@@ -5,9 +5,13 @@ export function login(params: object) {
     return request('login', option);
 }
 
+export function getUserInfo() {
+    return request('user');
+}
+
 export function home(params: object) {
     let option: RequestOption = { params };
-    return request('home', option);
+    return request('message', option);
 }
 
 export function postMessage(params: object) {

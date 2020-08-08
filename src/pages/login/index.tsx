@@ -2,9 +2,10 @@ import React from "react";
 import { inject, observer} from 'mobx-react';
 import session from "@/stores/session";
 import { Redirect } from 'react-router-dom';
+import styles from './login.module.styl';
 
 interface IState {
-    name: string;
+    username: string;
     password: string;
 }
 // interface IProps {
@@ -18,15 +19,17 @@ export default class Login extends React.PureComponent<any, IState> {
     constructor(props: any) {
         super(props);
         this.state = {
-            name: '',
+            username: '',
             password: '',
         }
     }
 
     login = async () => {
-        const { name, password } = this.state;
+        const { username, password } = this.state;
+        if (!username || !password) return;
+
         const {session} = this.props;
-        let err = await session.login({ name, password });
+        await session.login({ username, password });
     }
 
     render() {
@@ -34,14 +37,18 @@ export default class Login extends React.PureComponent<any, IState> {
         if (user){
             return <Redirect to="/" />
         }
-        return <>
-            <div>
-                <input onChange={e=>this.setState({ name: e.target.value })}/>
+        return <div className={styles.loginWrapper}>
+            <div className={styles.inputGroup}>
+                {/*<label htmlFor={'username'}>Username:</label>*/}
+                <input placeholder={'input username'} id={'username'} className={styles.input} onChange={e=>this.setState({ username: e.target.value })}/>
             </div>
-            <div>
-                <input type='password' onChange={e=>this.setState({ password: e.target.value })}/>
+            <div className={styles.inputGroup}>
+                {/*<label htmlFor={'password'}>Password:</label>*/}
+                <input placeholder={'input password'} id={'password'} className={styles.input} type='password' onChange={e=>this.setState({ password: e.target.value })}/>
             </div>
-            <button onClick={this.login}>登录</button>
-        </>
+            <div className={styles.inputGroup}>
+                <input type='button' value='登录' className={styles.input} onClick={this.login} />
+            </div>
+        </div>
     }
 }
