@@ -46,6 +46,19 @@ class Home {
     changeSendText = (val: string) => {
         this.sendText = val;
     }
+
+    @action
+    likeMessage = async (message: Message, unlike: boolean) => {
+        let { err } = await req.likeMessage({ message_id: message.id, unlike });
+        if (!err) {
+            this.messageList.map((item,i)=> {
+                if (item.id == message.id) {
+                    this.messageList[i].liked = !unlike;
+                    this.messageList[i].like_count += (unlike ? -1 : 1);
+                }
+            })
+        }
+    }
 }
 
 const home = new Home();

@@ -29,6 +29,10 @@ export default class Home extends React.PureComponent<any, IState> {
         this.props.home.postMessage();
     }
 
+    likeItem = (item: Message) => {
+        this.props.home.likeMessage(item, item.liked);
+    }
+
     render() {
         const { home: { messageList, sendText } } = this.props;
         return <div>
@@ -50,7 +54,7 @@ export default class Home extends React.PureComponent<any, IState> {
                     {item.content.split("\n").map((val: string)=><><span>{val}</span><br/></>)}
                 </div>
                 <div className={styles.interactive}>
-                    <span><FavoritesIcon color={'#AAA'} />{item.like_count}</span>
+                    <span onClick={()=>this.likeItem(item)}><FavoritesIcon color={item.liked ? 'red' : '#AAA'} />{item.like_count}</span>
                     <span><CommentsIcon color={'#AAA'}/>{item.comment_count}</span>
                 </div>
             </div>)}

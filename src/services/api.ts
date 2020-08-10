@@ -18,3 +18,8 @@ export function postMessage(params: object) {
     let option: RequestOption = { method: 'post', params };
     return request('message', option);
 }
+
+export function likeMessage(params: object) {
+    let option: RequestOption = { method: 'post', params };
+    return request('message/like', option);
+}
