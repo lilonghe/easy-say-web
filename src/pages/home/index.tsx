@@ -3,6 +3,8 @@ import {inject, observer} from "mobx-react";
 import Message from '@/models/message';
 import styles from './home.module.styl';
 import { tranTextColor } from '@/utils/utils';
+import FavoritesIcon from '@/components/icons/favorites';
+import CommentsIcon from '@/components/icons/comments';
 
 class IState {
     sendText: string = '';
@@ -48,8 +50,8 @@ export default class Home extends React.PureComponent<any, IState> {
                     {item.content.split("\n").map((val: string)=><><span>{val}</span><br/></>)}
                 </div>
                 <div className={styles.interactive}>
-                    <span>like: {item.like_count}</span>
-                    <span>comment: {item.comment_count}</span>
+                    <span><FavoritesIcon color={'#AAA'} />{item.like_count}</span>
+                    <span><CommentsIcon color={'#AAA'}/>{item.comment_count}</span>
                 </div>
             </div>)}
             </div>

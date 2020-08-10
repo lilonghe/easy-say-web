@@ -6,7 +6,9 @@ import {inject, observer} from "mobx-react";
 export default class Layout extends React.PureComponent<any, {}> {
 
     componentDidMount(): void {
-        this.props.session.getUserInfo();
+        if (window.location.pathname != "/login") {
+            this.props.session.getUserInfo();
+        }
     }
 
     render() {
