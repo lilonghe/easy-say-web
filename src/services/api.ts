@@ -23,3 +23,13 @@ export function likeMessage(params: object) {
     let option: RequestOption = { method: 'post', params };
     return request('message/like', option);
 }
+
+export function getMessageComments(params: object) {
+    let option: RequestOption = { params };
+    return request('message/comment', option);
+}
+
+export function postMessageComment(params: object) {
+    let option: RequestOption = { method: 'post', params };
+    return request('message/comment', option);
+}

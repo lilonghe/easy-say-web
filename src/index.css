@@ -25,6 +25,9 @@ body, input {
 img {
   max-width: 100%;
 }
+li {
+  list-style: none;
+}
 
 @media screen and (max-width: 768px) {
   body {

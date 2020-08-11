@@ -4,13 +4,52 @@
   margin-top: 20px;
 }
 
+.sendInput {
+  width: 100%;
+  border: 1px solid #EEE;
+  outline: none;
+  height: 70px;
+  padding: 10px;
+  resize: none;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.sendBtn {
+  margin-left: 100%;
+  float: right;
+  border: none;
+  box-shadow: 0 0 0 .5px rgba(0,0,0,.08);
+  background-color: #FFF;
+  padding: 4px 20px;
+  margin-top: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .1s;
+  outline: none;
+
+  &:hover {
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,.08);
+  }
+
+  &:active {
+    box-shadow: inset 0px 0px 1px 0.8px rgba(0,0,0,0.05);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .messageList {
+    width: 100%;
+  }
+}
+
 .message {
   padding: 10px 20px;
   box-shadow: 0 0 10px 0px rgba(0,0,0,.05);
   border-radius: 10px;
   margin-bottom: 20px;
   overflow: hidden;
-  
+
   .userinfo {
     display: flex;
   }
@@ -58,45 +97,59 @@
 
     span {
       margin-left: 10px;
+      cursor: pointer;
     }
   }
-}
-  
-.sendInput {
-  width: 100%;
-  border: 1px solid #EEE;
-  outline: none;
-  height: 70px;
-  padding: 10px;
-  resize: none;
-  border-radius: 10px;
-  margin-top: 5px;
-}
 
-.sendBtn {
-  margin-left: 100%;
-  float: right;
-  border: none;
-  box-shadow: 0 0 0 .5px rgba(0,0,0,.08);
-  background-color: #FFF;
-  padding: 4px 20px;
-  margin-top: 4px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all .1s;
-  outline: none;
+  .commentsWrapper {
+    border-top: 1px dashed rgba(0,0,0,0.1);
+    margin-top: 10px;
+    padding: 10px 10px;
+    font-size: 12px;
+    word-break: break-all;
+    color: #666;
 
-  &:hover {
-    box-shadow: 1px 1px 3px 1px rgba(0,0,0,.08);
-  }
+    .commentItem {
+      margin-bottom: 2px;
+    }
 
-  &:active {
-    box-shadow: inset 0px 0px 1px 0.8px rgba(0,0,0,0.05);
-  }
-}
+    .commentUserName {
+      margin-right: 4px;
+    }
 
-@media screen and (max-width: 768px) {
-  .messageList {
-    width: 100%;
+    .sendCommentWrapper {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .sendCommentInput {
+      width: 100%;
+      border: 1px solid #EEE;
+      outline: none;
+      //height: 70px;
+      padding: 10px;
+      resize: none;
+      border-radius: 5px;
+      flex: 1;
+    }
+    .sendCommentBtn {
+      margin-left: 6px;
+      border: none;
+      box-shadow: 0 0 0 .5px rgba(0,0,0,.08);
+      background-color: #FFF;
+      padding: 4px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .1s;
+      outline: none;
+
+      &:hover {
+        box-shadow: .1px .1px 3px .1px rgba(0,0,0,.08);
+      }
+
+      &:active {
+        box-shadow: inset 0px 0px 1px 0.8px rgba(0,0,0,0.05);
+      }
+    }
   }
 }

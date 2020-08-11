@@ -9,6 +9,7 @@ export class RequestOption {
     method?: string = 'get';
     params?: object;
     credentials?: RequestCredentials =  'include';
+    headers?: any;
 }
 
 export default function request(url: string, option?: RequestOption) {
@@ -26,6 +27,10 @@ export default function request(url: string, option?: RequestOption) {
     if (!option.credentials) {
         option.credentials = 'include';
     }
+    if (!option.headers) {
+        option.headers = {};
+    }
+    option.headers['Content-Type'] = 'application/json; charset=utf-8';
 
     return fetch(host + url, option).
         then(checkStatus).
