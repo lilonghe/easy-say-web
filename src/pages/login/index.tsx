@@ -1,16 +1,15 @@
 import React from "react";
 import { inject, observer} from 'mobx-react';
-import session from "@/stores/session";
 import { Redirect } from 'react-router-dom';
 import styles from './login.module.styl';
+import GithubIcon from '@/components/icons/github';
+import qs from 'query-string';
+import * as req from '@/services/api';
 
 interface IState {
     username: string;
     password: string;
 }
-// interface IProps {
-//     session?: session;
-// }
 
 @inject("session")
 @observer
@@ -24,12 +23,31 @@ export default class Login extends React.PureComponent<any, IState> {
         }
     }
 
+    componentDidMount(): void {
+        this.autoLogin();
+    }
+
+    autoLogin = async () => {
+        let params = qs.parse(window.location.search);
+        let code = params['code'];
+        if (code) {
+            let {err} = await req.authGithub({code})
+            if (!err) {
+                this.props.session.getUserInfo();
+            }
+        }
+    }
+
     login = async () => {
         const { username, password } = this.state;
         if (!username || !password) return;
 
         const {session} = this.props;
         await session.login({ username, password });
+    }
+
+    goGithub = () => {
+        window.location.href = `https://github.com/login/oauth/authorize?scopes=read:user,user:email&client_id=7d77e8a92d08d278549d&redirect_uri=${encodeURIComponent(window.location.origin+window.location.pathname+"?channel=github")}`;
     }
 
     render() {
@@ -48,6 +66,9 @@ export default class Login extends React.PureComponent<any, IState> {
             </div>
             <div className={styles.inputGroup}>
                 <input type='button' value='登录' className={styles.input} onClick={this.login} />
+            </div>
+            <div>
+                <span onClick={this.goGithub}><GithubIcon /></span>
             </div>
         </div>
     }

@@ -33,3 +33,8 @@ export function postMessageComment(params: object) {
     let option: RequestOption = { method: 'post', params };
     return request('message/comment', option);
 }
+
+export function authGithub(params: object) {
+    let option: RequestOption = { params };
+    return request('oauth/github', option);
+}
