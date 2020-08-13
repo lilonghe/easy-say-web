@@ -4,6 +4,7 @@
   border-radius: 10px;
   margin-bottom: 20px;
   overflow: hidden;
+  user-select: none;
 
   .userinfo {
     display: flex;
@@ -52,6 +53,69 @@
 
     span {
       margin-left: 10px;
+      cursor: pointer;
+      user-select: none;
     }
+  }
+
+  .commentsWrapper {
+    border-top: 1px dashed rgba(0,0,0,0.1);
+    margin-top: 10px;
+    padding: 10px 10px;
+    font-size: 12px;
+    word-break: break-all;
+    color: #666;
+    background-color: rgba(0,0,0,.01);
+    border-radius: 5px;
+
+    .commentItem {
+      margin-bottom: 2px;
+    }
+
+    .commentUserName {
+      margin-right: 4px;
+    }
+
+    .sendCommentWrapper {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .sendCommentInput {
+      width: 100%;
+      border: 1px solid #EEE;
+      outline: none;
+      padding: 6px;
+      resize: none;
+      border-radius: 5px;
+      flex: 1;
+    }
+    .sendCommentBtn {
+      margin-left: 6px;
+      border: none;
+      box-shadow: 0 0 0 .5px rgba(0,0,0,.08);
+      background-color: #FFF;
+      padding: 0 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .1s;
+      outline: none;
+
+      //&:hover {
+      //  box-shadow: .1px .1px 3px .1px rgba(0,0,0,.08);
+      //}
+
+      &:active {
+        box-shadow: inset 0px 0px 1px 0.8px rgba(0,0,0,0.05);
+      }
+    }
+  }
+
+  .cTime {
+    text-align: right;
+    font-size: 10px;
+    color: #CCC;
+    display: inline-block;
+    vertical-align: 1px;
   }
 }

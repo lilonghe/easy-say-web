@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import qs from 'query-string';
+import notification from '@/components/notification';
 
 // const host: string = "http://rap2.taobao.org:38080/app/mock/262830/";
 const host: string = "http://127.0.0.1:8080/api/";
@@ -34,9 +35,16 @@ export default function request(url: string, option?: RequestOption) {
 
     return fetch(host + url, option).
         then(checkStatus).
-        then((res: Response)=>res.json()).then((data: any)=>{
+        then((res: Response)=>res.json()).
+        catch(reason => {
+            if (reason === 401) {
+                return {};
+            }
+            console.log(reason);
+            return {err: "网络错误"};
+        }).then((data: any)=>{
             if (data.err) {
-                alert(data.err);
+                notification({ content: "网络错误", timeout: 0 });
             }
             return data;
     });
@@ -45,6 +53,7 @@ export default function request(url: string, option?: RequestOption) {
 function checkStatus(response: Response) {
     if (response.status === 401) {
         window.location.href = "/login";
+        throw(401);
     }
     return response;
 }

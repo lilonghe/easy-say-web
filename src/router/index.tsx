@@ -12,6 +12,7 @@ export default class Router extends React.PureComponent {
     render() {
         return <Provider session={sessionStore} home={homeStore}>
             <Layout>
+
                 <BrowserRouter>
                     <Route exact={true} path="/" children={<Home />} />
                     <Route path="/login" children={<Login />} />

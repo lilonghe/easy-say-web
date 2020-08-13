@@ -85,6 +85,7 @@ class Home {
     postMessageComment = async (message_id: string) => {
         let i = this.messageList.findIndex(item => item.id === message_id);
         let msg = this.messageList[i];
+        if (!msg?.commentText) return;
         let {err} = await req.postMessageComment({ message_id, content: msg?.commentText });
         if (!err) {
             this.messageList[i].commentText = "";
